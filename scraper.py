@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#scrapers gonna scrape
 
 import csv
 import mechanize 
@@ -11,7 +11,7 @@ annDonorsurl = "http://periodicdisclosures.aec.gov.au/AnalysisDonor.aspx"
 periods = [
 #{"year":"1998-1999","id":"1"},
 #{"year":"1999-2000","id":"2"},
-#{"year":"2000-2001","id":"3"},
+{"year":"2000-2001","id":"3"},
 #{"year":"2001-2002","id":"4"},
 #{"year":"2002-2003","id":"5"},
 #{"year":"2003-2004","id":"6"},
@@ -78,7 +78,7 @@ if scraperwiki.sqlite.get_var('upto'):
     print "Scraper upto:",upto,"period:",periods[upto]['year']
 else:
     print "Scraper first run"
-    upto = 0    
+    upto = 0
 
 #to run entirely again, just set upto to 0 
 upto = 0    
@@ -188,22 +188,22 @@ for x in xrange(upto, len(periods)):
 
 
         data = {}
-        data['donType'] = donType
+        data['period'] = periods[x]['year']
         data['submissionID'] = submissionID
         data['clientID'] = clientID
+        data['recipID'] = recipID
+        data['donType'] = donType
         data['donName'] = donName
-        data['address'] = address
-        data['state'] = state
-        data['postcode'] = postcode
-        data['value'] = value
-        data['donUrl'] = donUrl
-        data['recipUrl'] = recipUrl
-        data['yearcount'] = i
-        data['period'] = periods[x]['year']
         data['cleanDonName'] = cleanDonName
         data['recipName'] = recipName
         data['cleanRecipName'] = cleanRecipName
-        data['recipID'] = recipID
+        data['value'] = value
+        data['address'] = address
+        data['state'] = state
+        data['postcode'] = postcode
+        data['donUrl'] = donUrl
+        data['recipUrl'] = recipUrl
+        data['yearcount'] = i
 
         for groupID in partyGroups:
             if recipID == groupID['entityID']:
