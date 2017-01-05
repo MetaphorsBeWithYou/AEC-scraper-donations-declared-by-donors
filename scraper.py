@@ -164,27 +164,27 @@ for x in xrange(upto, len(periods)):
         recipID = lxml.html.tostring(tds[5]).split('ClientId=')[1].split('">')[0]
         #print recipID
 
-        fixedUrl = 'http://periodicdisclosures.aec.gov.au/' + donUrl.replace("amp;","")
-        html = requests.get(fixedUrl).content
-        dom = lxml.html.fromstring(html)
-        h2s = dom.cssselect(".rightColfadWideHold h2")
-        if donType == "Donor" or donType == "AssociatedEntity":
-            cleanDonName = h2s[0].text.strip()
+        #fixedUrl = 'http://periodicdisclosures.aec.gov.au/' + donUrl.replace("amp;","")
+        #html = requests.get(fixedUrl).content
+        #dom = lxml.html.fromstring(html)
+        #h2s = dom.cssselect(".rightColfadWideHold h2")
+        #if donType == "Donor" or donType == "AssociatedEntity":
+            #cleanDonName = h2s[0].text.strip()
             #print cleanDonName.strip()
-        if donType == "Party":
-            cleanDonName = h2s[1].text.strip()
+        #if donType == "Party":
+            #cleanDonName = h2s[1].text.strip()
             #print cleanDonName.strip()
 
-        fixedUrl = 'http://periodicdisclosures.aec.gov.au/' + recipUrl.replace("amp;","")
-        html = requests.get(fixedUrl).content
+        #fixedUrl = 'http://periodicdisclosures.aec.gov.au/' + recipUrl.replace("amp;","")
+        #html = requests.get(fixedUrl).content
         #print fixedUrl, donType
-        dom = lxml.html.fromstring(html)
-        h2s = dom.cssselect(".rightColfadWideHold h2")
-        if recipType == "Donor" or recipType == "AssociatedEntity":
-            cleanRecipName = h2s[0].text.strip()
+        #dom = lxml.html.fromstring(html)
+        #h2s = dom.cssselect(".rightColfadWideHold h2")
+        #if recipType == "Donor" or recipType == "AssociatedEntity":
+            #cleanRecipName = h2s[0].text.strip()
             #print cleanRecipName.strip()
-        if recipType == "Party":
-            cleanRecipName = h2s[1].text.strip()
+        #if recipType == "Party":
+            #cleanRecipName = h2s[1].text.strip()
             #print cleanRecipName.strip()
 
 
@@ -195,9 +195,9 @@ for x in xrange(upto, len(periods)):
         data['recipID'] = recipID
         data['donType'] = donType
         data['donName'] = donName
-        data['cleanDonName'] = cleanDonName
+        #data['cleanDonName'] = cleanDonName
         data['recipName'] = recipName
-        data['cleanRecipName'] = cleanRecipName
+        #data['cleanRecipName'] = cleanRecipName
         data['value'] = value
         data['address'] = address
         data['state'] = state
